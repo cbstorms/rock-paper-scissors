@@ -12,20 +12,30 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = (prompt(("Choose your weapon!")));
+    choice = (prompt(("Choose your weapon!")));
     return choice;
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-    if (computerChoice === 'rock' && humanChoice === 'scissors') {
-        return "Rock beats scissors!";
+function playRound() {
+    if (getComputerChoice() === 'rock' && getHumanChoice() === 'scissors') {
+        return "You lose :( Rock beats scissors.";
+    } else if (getComputerChoice() === 'rock' && getHumanChoice() === 'paper') {
+        return "You win! Paper beats rock.";
+    } else if (getComputerChoice() === 'paper' && getHumanChoice() === 'scissors') {
+        return "You win! Scissors beat paper.";
+    } else if (getComputerChoice() === 'paper' && getHumanChoice() === 'rock') {
+        return "You lose :( Paper beats  rock.";
+    } else if (getComputerChoice() === 'scissors' && getHumanChoice() === 'paper') {
+        return "You lose :( Scissors beat paper.";
+    } else if (getComputerChoice() === 'scissors' && getHumanChoice() === 'rock') {
+        return "You win! Rock beats scissors.";
     }
 }
 
 
-console.log(getComputerChoice());
-console.log(getHumanChoice());
-console.log(playRound(getComputerChoice(), getHumanChoice()));
+//console.log(getComputerChoice());
+//console.log(getHumanChoice());
+console.log(playRound());
