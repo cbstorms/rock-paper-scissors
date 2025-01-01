@@ -17,8 +17,8 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
+/*const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice(); */
 
 function playRound(humanChoice, computerChoice) {
     if ((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') ||
@@ -35,7 +35,33 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-console.log(computerSelection);
+/*console.log(computerSelection);
 console.log(humanSelection);
 console.log(playRound(humanSelection, computerSelection));
-console.log("Your score: " + humanScore + " vs. Computer Score: " + computerScore);
+console.log("Your score: " + humanScore + " vs. Computer Score: " + computerScore); */
+
+
+// Start of new code to add playGame fn
+
+function playGame() {
+
+    for (let i =0; i < 5; i++) {
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice(); 
+
+        console.log(computerSelection);
+        console.log(humanSelection);
+        console.log(playRound(humanSelection, computerSelection));
+        console.log(`Your score: ${humanScore} vs. Computer Score: ${computerScore}`);
+    }
+
+    if (humanScore > computerScore) {
+        console.log(`You win ${humanScore} games to ${computerScore}!`);
+    } else if (humanScore < computerScore) {
+        console.log(`You lose ${humanScore} games to ${computerScore} :(`);
+    } else {
+        console.log(`Tie, ${humanScore} games a piece.`);
+    }
+}
+
+playGame();
