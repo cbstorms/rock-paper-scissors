@@ -17,31 +17,51 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
+/*const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice(); */
 
-function playRound() {
-    if (computerSelection === 'rock' && humanSelection === 'scissors') {
-        return "You lose :( Rock beats scissors.";
-    } else if (computerSelection === 'rock' && humanSelection === 'paper') {
-        return "You win! Paper beats rock.";
-    } else if (computerSelection === 'rock' && humanSelection === 'rock') {
-        return "Tie! Rock.";
-    } else if (computerSelection === 'paper' && humanSelection === 'scissors') {
-        return "You win! Scissors beat paper.";
-    } else if (computerSelection === 'paper' && humanSelection === 'rock') {
-        return "You lose :( Paper beats  rock.";
-    } else if (computerSelection === 'paper' && humanSelection === 'paper') {
-        return "Tie! Paper.";
-    } else if (computerSelection === 'scissors' && humanSelection === 'paper') {
-        return "You lose :( Scissors beat paper.";
-    } else if (computerSelection === 'scissors' && humanSelection === 'rock') {
-        return "You win! Rock beats scissors.";
-    } else if (computerSelection === 'scissors' && humanSelection === 'scissors') {
-        return "Tie! Scissors.";
+function playRound(humanChoice, computerChoice) {
+    if ((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') ||
+    (humanChoice === 'scissors' && computerChoice === 'paper')) {
+        humanScore ++;
+        return "You win! " + humanChoice  + " beats " + computerChoice + ".";
+    } else if (humanChoice === 'rock' && computerChoice === 'paper' || (humanChoice === 'paper' && computerChoice === 'scissors') || 
+    (humanChoice === 'scissors' && computerChoice === 'rock')) {
+        computerScore ++;
+        return "You lose :( " + computerChoice  + " beats " + humanChoice + ".";
+    } else if (humanChoice === 'rock' && computerChoice === 'rock' || (humanChoice === 'paper' && computerChoice === 'paper') ||
+    (humanChoice === 'scissors' && computerChoice === 'scissors')) {
+        return "Tie! " + humanChoice + ".";
     }
 }
 
-console.log(computerSelection);
+/*console.log(computerSelection);
 console.log(humanSelection);
-console.log(playRound());
+console.log(playRound(humanSelection, computerSelection));
+console.log("Your score: " + humanScore + " vs. Computer Score: " + computerScore); */
+
+
+// Start of new code to add playGame fn
+
+function playGame() {
+
+    for (let i =0; i < 5; i++) {
+        const computerSelection = getComputerChoice();
+        const humanSelection = getHumanChoice(); 
+
+        console.log(computerSelection);
+        console.log(humanSelection);
+        console.log(playRound(humanSelection, computerSelection));
+        console.log(`Your score: ${humanScore} vs. Computer Score: ${computerScore}`);
+    }
+
+    if (humanScore > computerScore) {
+        console.log(`You win ${humanScore} games to ${computerScore}!`);
+    } else if (humanScore < computerScore) {
+        console.log(`You lose ${humanScore} games to ${computerScore} :(`);
+    } else {
+        console.log(`Tie, ${humanScore} games a piece.`);
+    }
+}
+
+playGame();
