@@ -17,9 +17,6 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-/*const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice(); */
-
 function playRound(humanChoice, computerChoice) {
     if ((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') ||
     (humanChoice === 'scissors' && computerChoice === 'paper')) {
@@ -34,14 +31,6 @@ function playRound(humanChoice, computerChoice) {
         return "Tie! " + humanChoice + ".";
     }
 }
-
-/*console.log(computerSelection);
-console.log(humanSelection);
-console.log(playRound(humanSelection, computerSelection));
-console.log("Your score: " + humanScore + " vs. Computer Score: " + computerScore); */
-
-
-// Start of new code to add playGame fn
 
 function playGame() {
 
